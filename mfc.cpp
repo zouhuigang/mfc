@@ -59,4 +59,33 @@ void  MyFrame::OnPaint(){
 
 	//画椭圆
 	dc.Ellipse(10,10,100,100);
+
+	//多字节转为宽字节,加个L
+	//TEXT会自动适应编码的转换
+	//TCHAR 自适应编码的转换
+	//MessageBox(L"aaaa");
+
+	//统计字符串长度
+	int num = 0;
+	char *p = "aaaaa";
+	num = strlen(p);
+
+	//统计宽字节
+	wchar_t * p2 = L"bbbb";
+	num = wcslen(p2);
+
+	//char * 和CString之间的转换
+	//char* -> CString
+	char *p3 = "ccc";
+	CString str = CString(p3);
+
+	//CString -> char *
+	CStringA tmp;
+	tmp = str;
+	char * pp = tmp.GetBuffer();
+
+	//CString转c++ string是无法直接转换的,需要char作为中间转换
 }
+
+//老外1字符对应1字节和多字节
+//中文 1字符对应多个字节 宽字节 Unicode utf-8 3个 GBK 2个
